@@ -47,6 +47,10 @@ st.markdown("""
         border-radius: 8px;
         padding: 10px;
     }
+    .food-image {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
     @media screen and (max-width: 600px) {
         .stMetric { padding: 8px; }
     }
@@ -186,22 +190,78 @@ ATTRACTIONS = {
     ]
 }
 
-# Food recommendations - Complete for all states
+# Food recommendations with descriptions - Complete for all states
 FOOD_RECOMMENDATIONS = {
-    "Johor": "Laksa Johor, Mee Bandung Muar, Satay, Otak-Otak",
-    "Kedah": "Laksa Kedah, Nasi Ulam, Pulut Panggang, Jeruk Mangga",
-    "Kelantan": "Nasi Kerabu, Ayam Percik, Solok Lada, Keropok Lekor",
-    "Malacca": "Chicken Rice Ball, Cendol, Nyonya Laksa, Satay Celup",
-    "Negeri Sembilan": "Masak Lemak Cili Api, Rendang Daging, Gulai Tempoyak",
-    "Pahang": "Ikan Patin Masak Tempoyak, Keropok Lekor, Gulai Kawah",
-    "Penang": "Char Kway Teow, Assam Laksa, Penang Rojak, Cendol",
-    "Perak": "Ipoh White Coffee, Taugeh Ayam, Hor Fun, Dim Sum",
-    "Perlis": "Laksa Perlis, Harum Manis Mango, Jeruk Kedondong",
-    "Sabah": "Hinava, Ambuyat, Tuhau, Bosou, Pinasakan",
-    "Sarawak": "Sarawak Laksa, Kolo Mee, Manok Pansuh, Midin Belacan",
-    "Selangor": "Bak Kut Teh, Yong Tau Foo, Hokkien Mee, Satay Kajang",
-    "Terengganu": "Keropok Lekor, Nasi Dagang, Satar, Nekbat",
-    "Federal Territory": "Nasi Lemak, Satay, Bak Kut Teh, Roti Canai, Char Kway Teow"
+    "Johor": {
+        "dishes": "Laksa Johor, Mee Bandung Muar, Satay, Otak-Otak",
+        "description": "Johor's cuisine features rich coconut-based curries and spicy noodle dishes with unique Malay-Javanese influences.",
+        "image": "/images/food/johor-laksa.jpg"
+    },
+    "Kedah": {
+        "dishes": "Laksa Kedah, Nasi Ulam, Pulut Panggang, Jeruk Mangga",
+        "description": "Known for its rice-based dishes and traditional Malay herbs, Kedah offers authentic northern Malaysian flavors.",
+        "image": "/images/food/kl-nasi-lemak.jpg"
+    },
+    "Kelantan": {
+        "dishes": "Nasi Kerabu, Ayam Percik, Solok Lada, Keropok Lekor",
+        "description": "Kelantan's colorful blue rice and grilled specialties showcase the state's vibrant culinary heritage.",
+        "image": "/images/food/kelantan-nasi-kerabu.jpg"
+    },
+    "Malacca": {
+        "dishes": "Chicken Rice Ball, Cendol, Nyonya Laksa, Satay Celup",
+        "description": "Historic Malacca blends Peranakan, Portuguese, and Malay cuisines in unique fusion dishes.",
+        "image": "/images/food/malacca-chicken-rice-ball.jpg"
+    },
+    "Negeri Sembilan": {
+        "dishes": "Masak Lemak Cili Api, Rendang Daging, Gulai Tempoyak",
+        "description": "Minangkabau-influenced cuisine featuring coconut milk curries and spicy traditional dishes.",
+        "image": "/images/food/kl-nasi-lemak.jpg"
+    },
+    "Pahang": {
+        "dishes": "Ikan Patin Masak Tempoyak, Keropok Lekor, Gulai Kawah",
+        "description": "River fish specialties and fermented durian dishes highlight Pahang's unique inland cuisine.",
+        "image": "/images/food/kl-nasi-lemak.jpg"
+    },
+    "Penang": {
+        "dishes": "Char Kway Teow, Assam Laksa, Penang Rojak, Cendol",
+        "description": "UNESCO-recognized street food paradise with Chinese-Malay fusion creating iconic hawker dishes.",
+        "image": "/images/food/penang-char-kway-teow.jpg"
+    },
+    "Perak": {
+        "dishes": "Ipoh White Coffee, Taugeh Ayam, Hor Fun, Dim Sum",
+        "description": "Famous for its white coffee and fresh bean sprouts, Ipoh offers refined Cantonese-influenced cuisine.",
+        "image": "/images/food/ipoh-white-coffee.jpg"
+    },
+    "Perlis": {
+        "dishes": "Laksa Perlis, Harum Manis Mango, Jeruk Kedondong",
+        "description": "Malaysia's smallest state offers sweet mangoes and unique northern border flavors.",
+        "image": "/images/food/kl-nasi-lemak.jpg"
+    },
+    "Sabah": {
+        "dishes": "Hinava, Ambuyat, Tuhau, Bosou, Pinasakan",
+        "description": "Indigenous Kadazan-Dusun cuisine featuring raw fish salads and exotic jungle ingredients.",
+        "image": "/images/food/sabah-hinava.jpg"
+    },
+    "Sarawak": {
+        "dishes": "Sarawak Laksa, Kolo Mee, Manok Pansuh, Midin Belacan",
+        "description": "Dayak and Chinese influences create unique dishes like bamboo chicken and jungle fern vegetables.",
+        "image": "/images/food/sarawak-laksa.jpg"
+    },
+    "Selangor": {
+        "dishes": "Bak Kut Teh, Yong Tau Foo, Hokkien Mee, Satay Kajang",
+        "description": "Malaysia's most developed state offers diverse urban cuisine from traditional to modern fusion.",
+        "image": "/images/food/kl-nasi-lemak.jpg"
+    },
+    "Terengganu": {
+        "dishes": "Keropok Lekor, Nasi Dagang, Satar, Nekbat",
+        "description": "East coast seafood specialties and coconut-rich dishes reflect Terengganu's maritime culture.",
+        "image": "/images/food/kl-nasi-lemak.jpg"
+    },
+    "Federal Territory": {
+        "dishes": "Nasi Lemak, Satay, Bak Kut Teh, Roti Canai, Char Kway Teow",
+        "description": "Malaysia's capital showcases the best of all regional cuisines in one cosmopolitan food scene.",
+        "image": "/images/food/kl-nasi-lemak.jpg"
+    }
 }
 
 # ============ SIDEBAR ============
@@ -313,6 +373,15 @@ try:
                 "Ipoh": "0.7 million",
                 "Kuching": "0.6 million",
                 "Kota Kinabalu": "0.5 million",
+                "Alor Setar": "0.4 million",
+                "Kota Bharu": "0.3 million",
+                "Seremban": "0.5 million",
+                "Kuantan": "0.6 million",
+                "Kangar": "0.1 million",
+                "Shah Alam": "0.7 million",
+                "Kuala Terengganu": "0.4 million",
+                "Putrajaya": "0.1 million",
+                "Labuan": "0.1 million"
             }
             st.markdown(f"**Population:** {population_data.get(clean_city, 'Data not available')}")
             
@@ -326,6 +395,15 @@ try:
                 "Ipoh": "Famous for white coffee and limestone caves",
                 "Kuching": "Cat City with beautiful riverfront",
                 "Kota Kinabalu": "Gateway to Mount Kinabalu",
+                "Alor Setar": "Birthplace of former Prime Ministers",
+                "Kota Bharu": "Cultural heart of Kelantan",
+                "Seremban": "Known for Minangkabau architecture",
+                "Kuantan": "Gateway to the East Coast",
+                "Kangar": "Malaysia's smallest state capital",
+                "Shah Alam": "Planned city with the Blue Mosque",
+                "Kuala Terengganu": "Home to the Crystal Mosque",
+                "Putrajaya": "Malaysia's administrative capital",
+                "Labuan": "Federal territory and duty-free island"
             }
             st.info(fun_facts.get(clean_city, "A beautiful Malaysian city with rich culture"))
     
@@ -382,10 +460,37 @@ try:
     
     # ============ LOCAL FOOD RECOMMENDATIONS ============
     with st.expander("🍜 Must-Try Local Foods"):
-        st.markdown(f"**{FOOD_RECOMMENDATIONS.get(state, 'Nasi Lemak (National Dish)')}**")
-        # Fixed: Changed use_column_width to use_container_width
-        st.image("https://via.placeholder.com/600x200.png?text=Local+Food+Images", 
-                caption="Sample local dishes", use_container_width=True)
+        food_info = FOOD_RECOMMENDATIONS.get(state, FOOD_RECOMMENDATIONS["Federal Territory"])
+        
+        # Display food information in columns
+        col1, col2 = st.columns([2, 1])
+        
+        with col1:
+            st.markdown(f"### **{food_info['dishes']}**")
+            st.markdown(f"*{food_info['description']}*")
+            
+            # Add some popular restaurants/locations
+            restaurant_suggestions = {
+                "Johor": "📍 **Where to try:** Muar town for authentic Mee Bandung, JB Central for Laksa Johor",
+                "Penang": "📍 **Where to try:** Gurney Drive, Penang Road, Georgetown UNESCO area",
+                "Malacca": "📍 **Where to try:** Jonker Street, Heeren Street, Cheng Hoon Teng area",
+                "Perak": "📍 **Where to try:** Ipoh Old Town, New Town kopitiam, Concubine Lane",
+                "Kelantan": "📍 **Where to try:** Siti Khadijah Market, Kota Bharu night market",
+                "Sabah": "📍 **Where to try:** Filipino Market KK, Gaya Street Sunday Market",
+                "Sarawak": "📍 **Where to try:** Kuching Waterfront, Top Spot Food Court",
+                "Federal Territory": "📍 **Where to try:** Jalan Alor, Petaling Street, Bangsar, KLCC"
+            }
+            
+            if state in restaurant_suggestions:
+                st.markdown(restaurant_suggestions[state])
+            
+        with col2:
+            # Display the appropriate food image
+            try:
+                st.image(food_info['image'], caption=f"Signature dishes of {state}", use_container_width=True)
+            except:
+                # Fallback to a default food image if specific image not found
+                st.image("/images/food/kl-nasi-lemak.jpg", caption=f"Local cuisine of {state}", use_container_width=True)
     
     # ============ INTERACTIVE MAP ============
     if show_map:
@@ -437,12 +542,15 @@ try:
         if city in ATTRACTIONS and len(ATTRACTIONS[city]) >= 2:
             morning_attr = random.choice(ATTRACTIONS[city])
             afternoon_attr = random.choice([a for a in ATTRACTIONS[city] if a != morning_attr])
+            food_info = FOOD_RECOMMENDATIONS.get(state, FOOD_RECOMMENDATIONS["Federal Territory"])
             
             itinerary = f"""
             **Morning (9AM-12PM):** Visit {morning_attr['name']}
-            **Lunch (12PM-2PM):** Try {FOOD_RECOMMENDATIONS.get(state, 'local cuisine').split(',')[0]}
+            **Lunch (12PM-2PM):** Try {food_info['dishes'].split(',')[0]} at a local restaurant
             **Afternoon (2PM-5PM):** Explore {afternoon_attr['name']}
-            **Evening (7PM+):** Dinner at a local restaurant
+            **Evening (7PM+):** Dinner featuring {food_info['dishes'].split(',')[1] if ',' in food_info['dishes'] else 'local specialties'}
+            
+            💡 **Food Tip:** {food_info['description']}
             """
             st.markdown(itinerary)
             st.session_state.itinerary = itinerary
@@ -574,4 +682,3 @@ st.markdown("""
         <p>Map data © OpenStreetMap contributors • Icons by OpenWeather</p>
     </div>
 """, unsafe_allow_html=True)
-
