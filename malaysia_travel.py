@@ -47,20 +47,6 @@ st.markdown("""
         border-radius: 8px;
         padding: 10px;
     }
-    .food-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 15px;
-        padding: 20px;
-        margin: 10px 0;
-        color: white;
-    }
-    .attraction-card {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        border-radius: 15px;
-        padding: 15px;
-        margin: 10px 0;
-        color: white;
-    }
     @media screen and (max-width: 600px) {
         .stMetric { padding: 8px; }
     }
@@ -100,86 +86,26 @@ STATE_CAPITALS = {
     }
 }
 
-# Enhanced tourist attractions data
+# Tourist attractions data
 ATTRACTIONS = {
     "Kuala Lumpur (Federal Territory)": [
-        {"name": "Petronas Twin Towers", "coords": (3.1579, 101.7116), "type": "landmark", "icon": "tower", "description": "Iconic twin skyscrapers with observation deck"},
-        {"name": "Batu Caves", "coords": (3.2373, 101.6839), "type": "nature", "icon": "mountain", "description": "Hindu temple complex in limestone caves"},
-        {"name": "Merdeka Square", "coords": (3.1479, 101.6937), "type": "historic", "icon": "landmark", "description": "Historic square where Malaysian independence was declared"},
-        {"name": "KL Tower", "coords": (3.1569, 101.7031), "type": "landmark", "icon": "tower", "description": "Communications tower with revolving restaurant"},
-        {"name": "Central Market", "coords": (3.1439, 101.6958), "type": "shopping", "icon": "shopping-cart", "description": "Cultural heritage site with local crafts"}
+        {"name": "Petronas Twin Towers", "coords": (3.1579, 101.7116), "type": "landmark", "icon": "tower"},
+        {"name": "Batu Caves", "coords": (3.2373, 101.6839), "type": "nature", "icon": "mountain"},
+        {"name": "Merdeka Square", "coords": (3.1479, 101.6937), "type": "historic", "icon": "landmark"}
     ],
     "George Town (Penang)": [
-        {"name": "Kek Lok Si Temple", "coords": (5.4030, 100.2732), "type": "cultural", "icon": "temple", "description": "Largest Buddhist temple in Malaysia"},
-        {"name": "Penang Hill", "coords": (5.4289, 100.2569), "type": "nature", "icon": "mountain", "description": "Hill station with panoramic views"},
-        {"name": "Armenian Street", "coords": (5.4175, 100.3347), "type": "cultural", "icon": "road", "description": "Historic street with street art"},
-        {"name": "Gurney Drive", "coords": (5.4378, 100.3108), "type": "food", "icon": "utensils", "description": "Famous food court by the sea"}
+        {"name": "Kek Lok Si Temple", "coords": (5.4030, 100.2732), "type": "cultural", "icon": "temple"},
+        {"name": "Penang Hill", "coords": (5.4289, 100.2569), "type": "nature", "icon": "mountain"}
     ],
-    "Johor Bahru (Johor)": [
-        {"name": "Sultan Abu Bakar State Mosque", "coords": (1.4655, 103.7578), "type": "cultural", "icon": "mosque", "description": "Beautiful mosque with Victorian architecture"},
-        {"name": "Johor Bahru City Square", "coords": (1.4648, 103.7618), "type": "shopping", "icon": "shopping-cart", "description": "Major shopping mall in city center"},
-        {"name": "Danga Bay", "coords": (1.4308, 103.6715), "type": "nature", "icon": "water", "description": "Waterfront development with parks"}
-    ],
-    "Malacca (Malacca)": [
-        {"name": "A Famosa", "coords": (2.1913, 102.2486), "type": "historic", "icon": "fort", "description": "Portuguese fortress ruins"},
-        {"name": "Christ Church", "coords": (2.1944, 102.2487), "type": "historic", "icon": "church", "description": "Dutch colonial church"},
-        {"name": "Jonker Street", "coords": (2.1949, 102.2473), "type": "cultural", "icon": "road", "description": "Historic street with night market"}
-    ],
-    "Kota Kinabalu (Sabah)": [
-        {"name": "Mount Kinabalu", "coords": (6.0745, 116.5581), "type": "nature", "icon": "mountain", "description": "Highest peak in Malaysia"},
-        {"name": "Tunku Abdul Rahman Park", "coords": (5.9667, 116.0167), "type": "nature", "icon": "island", "description": "Marine park with coral reefs"},
-        {"name": "Gaya Street", "coords": (5.9788, 116.0753), "type": "shopping", "icon": "shopping-cart", "description": "Sunday market street"}
-    ],
-    "Kuching (Sarawak)": [
-        {"name": "Sarawak Cultural Village", "coords": (1.7472, 110.4306), "type": "cultural", "icon": "home", "description": "Living museum of Sarawak's heritage"},
-        {"name": "Kuching Waterfront", "coords": (1.5583, 110.3472), "type": "scenic", "icon": "water", "description": "Scenic promenade along Sarawak River"},
-        {"name": "Semenggoh Nature Reserve", "coords": (1.4167, 110.3167), "type": "nature", "icon": "tree", "description": "Orangutan rehabilitation center"}
-    ]
+    # Add attractions for other cities
 }
 
-# Enhanced food recommendations with descriptions
+# Food recommendations
 FOOD_RECOMMENDATIONS = {
-    "Johor": {
-        "dishes": ["Laksa Johor", "Mee Bandung", "Satay", "Kacang Pool"],
-        "description": "Johor cuisine features unique noodle dishes and Middle Eastern influences"
-    },
-    "Penang": {
-        "dishes": ["Char Kway Teow", "Assam Laksa", "Penang Rojak", "Cendol"],
-        "description": "Street food paradise with UNESCO recognition for culinary heritage"
-    },
-    "Kuala Lumpur": {
-        "dishes": ["Nasi Lemak", "Satay", "Bak Kut Teh", "Hokkien Mee"],
-        "description": "Melting pot of Malaysian, Chinese, and Indian cuisines"
-    },
-    "Malacca": {
-        "dishes": ["Chicken Rice Ball", "Cendol", "Nyonya Laksa", "Satay Celup"],
-        "description": "Peranakan and Portuguese-influenced cuisine"
-    },
-    "Kedah": {
-        "dishes": ["Nasi Ulam", "Laksa Kedah", "Rendang Tok", "Gulai Tempoyak"],
-        "description": "Traditional Malay cuisine with royal heritage"
-    },
-    "Sabah": {
-        "dishes": ["Hinava", "Ambuyat", "Tuhau", "Beaufort Mee"],
-        "description": "Indigenous Bornean flavors with fresh seafood"
-    },
-    "Sarawak": {
-        "dishes": ["Sarawak Laksa", "Kolo Mee", "Midin", "Dabai"],
-        "description": "Unique Bornean ingredients and Chinese influences"
-    }
-}
-
-# City population and fun facts
-CITY_INFO = {
-    "Johor Bahru": {"population": "1.8 million", "fact": "Gateway to Singapore via the Causeway"},
-    "Kuala Lumpur": {"population": "1.9 million", "fact": "Home to the Petronas Twin Towers"},
-    "George Town": {"population": "0.7 million", "fact": "UNESCO World Heritage Site"},
-    "Malacca": {"population": "0.9 million", "fact": "Historic trading port with Portuguese heritage"},
-    "Kota Kinabalu": {"population": "0.5 million", "fact": "Gateway to Mount Kinabalu"},
-    "Kuching": {"population": "0.7 million", "fact": "Cat City of Borneo"},
-    "Kuantan": {"population": "0.6 million", "fact": "Capital of Pahang with beautiful beaches"},
-    "Ipoh": {"population": "0.8 million", "fact": "Famous for white coffee and limestone caves"},
-    "Shah Alam": {"population": "0.7 million", "fact": "Planned city with the Blue Mosque"},
+    "Johor": "Laksa Johor, Mee Bandung, Satay",
+    "Penang": "Char Kway Teow, Assam Laksa, Penang Rojak",
+    "Kuala Lumpur": "Nasi Lemak, Satay, Bak Kut Teh",
+    # Add for other states
 }
 
 # ============ SIDEBAR ============
@@ -283,12 +209,23 @@ try:
             st.markdown(f"### 🏛️ {state if state != 'Federal Territory' else 'Federal Territories'}")
             st.markdown(f"**Capital City**")
             
-            city_data = CITY_INFO.get(clean_city, {"population": "Data not available", "fact": "Beautiful Malaysian city"})
-            st.markdown(f"**Population:** {city_data['population']}")
+            population_data = {
+                "Johor Bahru": "1.8 million",
+                "Kuala Lumpur": "1.9 million",
+                "George Town": "0.7 million",
+                # Add other cities
+            }
+            st.markdown(f"**Population:** {population_data.get(clean_city, 'Data not available')}")
             
         with col2:
             st.markdown("### 🌟 Did You Know?")
-            st.info(city_data['fact'])
+            fun_facts = {
+                "Johor Bahru": "Gateway to Singapore via the Causeway",
+                "Kuala Lumpur": "Home to the Petronas Twin Towers",
+                "George Town": "UNESCO World Heritage Site",
+                # Add more facts
+            }
+            st.info(fun_facts.get(clean_city, "A beautiful Malaysian city with rich culture"))
     
     # ============ CURRENT WEATHER ============
     st.markdown(f"## ⛅ Current Weather in {clean_city}")
@@ -313,7 +250,7 @@ try:
             
             # Air Quality
             aqi_levels = ["Good", "Fair", "Moderate", "Poor", "Very Poor"]
-            aqi = aqi_data['list'][0]['main']['aqi'] if aqi_data and 'list' in aqi_data else 1
+            aqi = aqi_data['list'][0]['main']['aqi'] if aqi_data else 1
             aqi_color = ["#00E400", "#FFFF00", "#FF7E00", "#FF0000", "#8F3F97"][aqi-1]
             st.markdown(f"**Air Quality:** <span style='color:{aqi_color}'>{aqi_levels[aqi-1]}</span>", unsafe_allow_html=True)
             
@@ -343,25 +280,10 @@ try:
     
     # ============ LOCAL FOOD RECOMMENDATIONS ============
     with st.expander("🍜 Must-Try Local Foods"):
-        state_key = state if state in FOOD_RECOMMENDATIONS else "Kuala Lumpur"
-        food_data = FOOD_RECOMMENDATIONS.get(state_key, {"dishes": ["Nasi Lemak"], "description": "Malaysian cuisine"})
-        
-        st.markdown(f"<div class='food-card'>", unsafe_allow_html=True)
-        st.markdown(f"**Popular Dishes:** {', '.join(food_data['dishes'])}")
-        st.markdown(f"*{food_data['description']}*")
-        st.markdown("</div>", unsafe_allow_html=True)
-    
-    # ============ TOURIST ATTRACTIONS ============
-    if show_attractions and city in ATTRACTIONS:
-        st.markdown("## 🎯 Top Attractions")
-        attraction_cols = st.columns(min(3, len(ATTRACTIONS[city])))
-        for i, attraction in enumerate(ATTRACTIONS[city][:3]):  # Show top 3
-            with attraction_cols[i % 3]:
-                st.markdown(f"<div class='attraction-card'>", unsafe_allow_html=True)
-                st.markdown(f"**{attraction['name']}**")
-                st.markdown(f"{attraction['description']}")
-                st.markdown(f"*{attraction['type'].title()}*")
-                st.markdown("</div>", unsafe_allow_html=True)
+        st.markdown(f"**{FOOD_RECOMMENDATIONS.get(state, 'Nasi Lemak (National Dish)')}**")
+        # Placeholder for food images - in a real app, use actual images
+        st.image("https://via.placeholder.com/600x200.png?text=Local+Food+Images", 
+                caption="Sample local dishes", use_column_width=True)
     
     # ============ INTERACTIVE MAP ============
     if show_map:
@@ -375,19 +297,20 @@ try:
             location=city_coords,
             popup=f"{clean_city}",
             tooltip="Your Location",
-            icon=folium.Icon(color="red", icon="info-sign")
+            icon=folium.Icon(color="red", icon="info-sign", prefix="fa")
         ).add_to(m)
         
         # Add tourist attractions if enabled
         if show_attractions and city in ATTRACTIONS:
             for attr in ATTRACTIONS[city]:
-                color = {"nature": "green", "cultural": "blue", "historic": "purple", 
-                        "shopping": "orange", "food": "pink"}.get(attr["type"], "gray")
                 folium.Marker(
                     location=attr["coords"],
-                    popup=f"<b>{attr['name']}</b><br>{attr['description']}",
+                    popup=attr["name"],
                     tooltip=f"Attraction: {attr['name']}",
-                    icon=folium.Icon(color=color)
+                    icon=folium.Icon(
+                        color="green" if attr["type"] == "nature" else "blue",
+                        icon=attr.get("icon", "info-sign")
+                    )
                 ).add_to(m)
         
         # Add circle for visibility if available
@@ -406,57 +329,23 @@ try:
         folium_static(m, width=900, height=500)
     
     # ============ ITINERARY GENERATOR ============
-    if 'generate_itinerary' in st.session_state and st.session_state.generate_itinerary:
+    if 'generate_itinerary' in st.session_state:
         st.markdown("## 📝 Suggested 1-Day Itinerary")
         
         if city in ATTRACTIONS and len(ATTRACTIONS[city]) >= 2:
-            attractions = ATTRACTIONS[city]
-            morning_attr = random.choice(attractions)
-            afternoon_attr = random.choice([a for a in attractions if a != morning_attr])
-            
-            state_key = state if state in FOOD_RECOMMENDATIONS else "Kuala Lumpur"
-            food_data = FOOD_RECOMMENDATIONS.get(state_key, {"dishes": ["local cuisine"]})
-            lunch_dish = random.choice(food_data["dishes"])
+            morning_attr = random.choice(ATTRACTIONS[city])
+            afternoon_attr = random.choice([a for a in ATTRACTIONS[city] if a != morning_attr])
             
             itinerary = f"""
             **Morning (9AM-12PM):** Visit {morning_attr['name']}
-            _{morning_attr['description']}_
-            
-            **Lunch (12PM-2PM):** Try {lunch_dish} at a local restaurant
-            
+            **Lunch (12PM-2PM):** Try {FOOD_RECOMMENDATIONS.get(state, 'local cuisine').split(',')[0]}
             **Afternoon (2PM-5PM):** Explore {afternoon_attr['name']}
-            _{afternoon_attr['description']}_
-            
-            **Evening (7PM+):** Dinner at a local restaurant featuring {state_key} cuisine
+            **Evening (7PM+):** Dinner at a local restaurant
             """
             st.markdown(itinerary)
-            
-            # Weather advisory for the day
-            if weather_data and 'main' in weather_data:
-                temp = weather_data['main']['temp']
-                if temp > 32:
-                    st.warning("⚠️ Hot weather expected - bring sunscreen and stay hydrated!")
-                elif 'rain' in weather_data:
-                    st.info("🌧️ Rain possible - consider indoor attractions or bring an umbrella!")
-                    
-            st.session_state.generate_itinerary = False
+            st.session_state.itinerary = itinerary
         else:
-            # Generate generic itinerary
-            state_key = state if state in FOOD_RECOMMENDATIONS else "Kuala Lumpur"
-            food_data = FOOD_RECOMMENDATIONS.get(state_key, {"dishes": ["local cuisine"]})
-            
-            generic_itinerary = f"""
-            **Morning (9AM-12PM):** Explore the city center and local markets
-            
-            **Lunch (12PM-2PM):** Try {random.choice(food_data["dishes"])} at a recommended restaurant
-            
-            **Afternoon (2PM-5PM):** Visit cultural sites and take photos
-            
-            **Evening (7PM+):** Experience local nightlife and street food
-            """
-            st.markdown(generic_itinerary)
-            st.info("💡 More specific attractions will be added for this city soon!")
-            st.session_state.generate_itinerary = False
+            st.warning("Not enough attraction data to generate itinerary")
     
     # ============ 5-DAY FORECAST ============
     if show_forecast:
@@ -508,6 +397,23 @@ try:
                 yaxis='y2'
             ))
             
+            # Add weather icons
+            for i, date in enumerate(dates):
+                icon = max(set(forecast_days[date]['icons']), key=forecast_days[date]['icons'].count)
+                fig.add_layout_image(
+                    dict(
+                        source=get_weather_icon(icon),
+                        xref="x",
+                        yref="y",
+                        x=date,
+                        y=max(avg_temps) + (max(avg_temps)-min(avg_temps))*0.2,
+                        sizex=0.8,
+                        sizey=0.8,
+                        xanchor="center",
+                        yanchor="middle"
+                    )
+                )
+            
             # Update layout
             fig.update_layout(
                 template="plotly_dark",
@@ -545,8 +451,24 @@ try:
                     
                     # Get most common icon and description
                     icon = max(set(forecast_days[dates[i]]['icons']), key=forecast_days[dates[i]]['icons'].count)
-                    desc = max(set(forecast_days[dates[i]]['descriptions']), key
+                    desc = max(set(forecast_days[dates[i]]['descriptions']), key=forecast_days[dates[i]]['descriptions'].count)
                     
-                    # Get most common icon and description
-                    icon = max(set(forecast_days[dates[i]]['icons']), key=forecast_days[dates[i]]['icons'].count)
-                    desc = max(set(forecast_days[dates[i]]['descriptions']), key
+                    st.image(get_weather_icon(icon), width=50)
+                    st.markdown(f"**{avg_temps[i]} {temp_unit}**")
+                    st.markdown(f"{desc.title()}")
+                    st.markdown(f"Humidity: {avg_humidity[i]}%")
+        else:
+            st.warning("Forecast data not available")
+
+except Exception as e:
+    st.error(f"An error occurred: {str(e)}")
+    st.info("Please try selecting a different city or check your internet connection")
+
+# ============ FOOTER ============
+st.markdown("---")
+st.markdown("""
+    <div style="text-align: center; color: #A9A9A9; font-size: 0.9em;">
+        <p>Smart Malaysia Travel Companion • Data from OpenWeatherMap</p>
+        <p>Map data © OpenStreetMap contributors • Icons by OpenWeather</p>
+    </div>
+""", unsafe_allow_html=True)
