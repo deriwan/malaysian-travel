@@ -4,6 +4,7 @@ import plotly.graph_objects as go
 import datetime
 import folium
 from streamlit_folium import folium_static
+import random
 from PIL import Image
 
 # ============ SETTINGS ============
@@ -46,6 +47,9 @@ st.markdown("""
         border-radius: 8px;
         padding: 10px;
     }
+    @media screen and (max-width: 600px) {
+        .stMetric { padding: 8px; }
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -56,9 +60,11 @@ with col1:
              width=100)
 with col2:
     st.markdown("<h1 style='text-align: left;'>🌴 Smart Malaysia Travel Companion</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: left; color: #A9A9A9;'>Your complete guide to Malaysian state capitals with real-time weather</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: left; color: #A9A9A9;'>Your complete guide to Malaysian travel with real-time data</p>", unsafe_allow_html=True)
 
-# ============ MALAYSIA STATE CAPITALS ============
+# ============ DATA CONFIGURATION ============
+API_KEY = "15aee72fdd4a19cc0c56ea7607bf6af1"  # OpenWeatherMap free tier
+
 STATE_CAPITALS = {
     "Johor": {"capital": "Johor Bahru", "coords": (1.4927, 103.7414)},
     "Kedah": {"capital": "Alor Setar", "coords": (6.1214, 100.3695)},
@@ -80,28 +86,41 @@ STATE_CAPITALS = {
     }
 }
 
-# Create city options list with state labels
-CITY_OPTIONS = []
-for state, data in STATE_CAPITALS.items():
-    if state == "Federal Territories":
-        for city, coords in data.items():
-            CITY_OPTIONS.append(f"{city} (Federal Territory)")
-    else:
-        CITY_OPTIONS.append(f"{data['capital']} ({state})")
+# Tourist attractions data
+ATTRACTIONS = {
+    "Kuala Lumpur (Federal Territory)": [
+        {"name": "Petronas Twin Towers", "coords": (3.1579, 101.7116), "type": "landmark", "icon": "tower"},
+        {"name": "Batu Caves", "coords": (3.2373, 101.6839), "type": "nature", "icon": "mountain"},
+        {"name": "Merdeka Square", "coords": (3.1479, 101.6937), "type": "historic", "icon": "landmark"}
+    ],
+    "George Town (Penang)": [
+        {"name": "Kek Lok Si Temple", "coords": (5.4030, 100.2732), "type": "cultural", "icon": "temple"},
+        {"name": "Penang Hill", "coords": (5.4289, 100.2569), "type": "nature", "icon": "mountain"}
+    ],
+    # Add attractions for other cities
+}
 
-# Create coordinates mapping
-CITY_COORDS = {}
-for state, data in STATE_CAPITALS.items():
-    if state == "Federal Territories":
-        for city, coords in data.items():
-            CITY_COORDS[f"{city} (Federal Territory)"] = coords
-    else:
-        CITY_COORDS[f"{data['capital']} ({state})"] = data["coords"]
+# Food recommendations
+FOOD_RECOMMENDATIONS = {
+    "Johor": "Laksa Johor, Mee Bandung, Satay",
+    "Penang": "Char Kway Teow, Assam Laksa, Penang Rojak",
+    "Kuala Lumpur": "Nasi Lemak, Satay, Bak Kut Teh",
+    # Add for other states
+}
 
 # ============ SIDEBAR ============
 with st.sidebar:
-    st.markdown("### 🗺️ Location Settings", help="Select your desired location in Malaysia")
+    st.markdown("### 🗺️ Location Settings")
     use_auto = st.checkbox("Auto-detect my location", value=False)
+    
+    # Create city options list with state labels
+    CITY_OPTIONS = []
+    for state, data in STATE_CAPITALS.items():
+        if state == "Federal Territories":
+            for city, coords in data.items():
+                CITY_OPTIONS.append(f"{city} (Federal Territory)")
+        else:
+            CITY_OPTIONS.append(f"{data['capital']} ({state})")
     
     if use_auto:
         try:
@@ -112,9 +131,9 @@ with st.sidebar:
             
             # Find closest match
             selected_city = "Kuala Lumpur (Federal Territory)"  # Default
-            for city in CITY_OPTIONS:
-                if detected_city.lower() in city.lower():
-                    selected_city = city
+            for city_option in CITY_OPTIONS:
+                if detected_city.lower() in city_option.lower():
+                    selected_city = city_option
                     break
             
             st.success(f"Detected: {selected_city.split('(')[0].strip()}")
@@ -134,21 +153,36 @@ with st.sidebar:
     show_map = st.checkbox("Show Interactive Map", value=True)
     show_forecast = st.checkbox("Show 5-Day Forecast", value=True)
     show_details = st.checkbox("Show City Details", value=True)
+    show_attractions = st.checkbox("Show Tourist Attractions", value=True)
+    
+    st.markdown("---")
+    st.markdown("### 🆘 Emergency Contacts")
+    st.write("**Police:** 999")
+    st.write("**Tourism Police:** +603-2149 6590")
+    st.write("**Ambulance:** 999")
+    st.write("**Tourist Helpline:** 1-300-88-5050")
+    
+    if st.button("🛎️ Generate 1-Day Itinerary"):
+        st.session_state.generate_itinerary = True
 
 # ============ WEATHER FUNCTIONS ============
-API_KEY = "15aee72fdd4a19cc0c56ea7607bf6af1"  # Free tier OpenWeatherMap
-
+@st.cache_data(ttl=3600)  # Cache for 1 hour
 def get_weather(city_name, unit='metric'):
-    # Remove state from parentheses for API call
     clean_city = city_name.split("(")[0].strip()
     unit_param = 'metric' if unit == '°C' else 'imperial'
     url = f"https://api.openweathermap.org/data/2.5/weather?q={clean_city},MY&units={unit_param}&appid={API_KEY}"
     return requests.get(url).json()
 
+@st.cache_data(ttl=3600)
 def get_forecast(city_name, unit='metric'):
     clean_city = city_name.split("(")[0].strip()
     unit_param = 'metric' if unit == '°C' else 'imperial'
     url = f"https://api.openweathermap.org/data/2.5/forecast?q={clean_city},MY&units={unit_param}&appid={API_KEY}"
+    return requests.get(url).json()
+
+@st.cache_data(ttl=3600)
+def get_air_quality(lat, lon):
+    url = f"http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={API_KEY}"
     return requests.get(url).json()
 
 def get_weather_icon(icon_code):
@@ -158,11 +192,13 @@ def get_weather_icon(icon_code):
 try:
     # Get clean city name without state
     clean_city = city.split("(")[0].strip()
-    city_coords = CITY_COORDS[city]
+    state = city.split("(")[1].replace(")", "").strip()
+    city_coords = STATE_CAPITALS[state]["coords"] if state != "Federal Territory" else STATE_CAPITALS["Federal Territories"][clean_city]
     
     # Get weather data
     weather_data = get_weather(clean_city, temp_unit)
     forecast_data = get_forecast(clean_city, temp_unit)
+    aqi_data = get_air_quality(city_coords[0], city_coords[1])
     
     # ============ CITY INTRO SECTION ============
     st.markdown(f"## 🌆 {clean_city}")
@@ -170,28 +206,25 @@ try:
     if show_details:
         col1, col2 = st.columns([1, 2])
         with col1:
-            # Display state information
-            state = city.split("(")[1].replace(")", "").strip()
-            st.markdown(f"### 🏛️ {state}")
-            st.markdown(f"**Capital City of {state if state != 'Federal Territory' else 'Federal Territories'}**")
+            st.markdown(f"### 🏛️ {state if state != 'Federal Territory' else 'Federal Territories'}")
+            st.markdown(f"**Capital City**")
             
-            # Population data (example values - would need real API in production)
             population_data = {
                 "Johor Bahru": "1.8 million",
                 "Kuala Lumpur": "1.9 million",
-                # Add other cities as needed
+                "George Town": "0.7 million",
+                # Add other cities
             }
             st.markdown(f"**Population:** {population_data.get(clean_city, 'Data not available')}")
             
         with col2:
-            # Fun fact about the city
+            st.markdown("### 🌟 Did You Know?")
             fun_facts = {
                 "Johor Bahru": "Gateway to Singapore via the Causeway",
                 "Kuala Lumpur": "Home to the Petronas Twin Towers",
                 "George Town": "UNESCO World Heritage Site",
-                # Add more facts for other cities
+                # Add more facts
             }
-            st.markdown("### 🌟 Did You Know?")
             st.info(fun_facts.get(clean_city, "A beautiful Malaysian city with rich culture"))
     
     # ============ CURRENT WEATHER ============
@@ -214,7 +247,12 @@ try:
             st.image(get_weather_icon(icon_code), width=70)
             st.markdown(f"**{weather_desc}**")
             st.markdown(f"Humidity: {weather_data['main']['humidity']}%")
-            st.markdown(f"Clouds: {weather_data['clouds']['all']}%")
+            
+            # Air Quality
+            aqi_levels = ["Good", "Fair", "Moderate", "Poor", "Very Poor"]
+            aqi = aqi_data['list'][0]['main']['aqi'] if aqi_data else 1
+            aqi_color = ["#00E400", "#FFFF00", "#FF7E00", "#FF0000", "#8F3F97"][aqi-1]
+            st.markdown(f"**Air Quality:** <span style='color:{aqi_color}'>{aqi_levels[aqi-1]}</span>", unsafe_allow_html=True)
             
         with col3:
             st.markdown("### 💨 Wind & Atmosphere")
@@ -227,8 +265,25 @@ try:
             st.markdown(f"**Visibility:** {visibility}")
             pressure = weather_data['main']['pressure']
             st.markdown(f"**Pressure:** {pressure} hPa")
+            
+            # Packing suggestions
+            with st.expander("🧳 Packing Suggestions"):
+                items = ["Universal Adapter", "Passport"]
+                if weather_data['main']['temp'] > 30:
+                    items.extend(["Sunscreen", "Hat", "Light Clothing"])
+                if 'rain' in weather_data:
+                    items.append("Umbrella/Raincoat")
+                for item in items:
+                    st.checkbox(item, key=f"pack_{item}")
     else:
         st.error("Failed to fetch current weather data")
+    
+    # ============ LOCAL FOOD RECOMMENDATIONS ============
+    with st.expander("🍜 Must-Try Local Foods"):
+        st.markdown(f"**{FOOD_RECOMMENDATIONS.get(state, 'Nasi Lemak (National Dish)')}**")
+        # Placeholder for food images - in a real app, use actual images
+        st.image("https://via.placeholder.com/600x200.png?text=Local+Food+Images", 
+                caption="Sample local dishes", use_column_width=True)
     
     # ============ INTERACTIVE MAP ============
     if show_map:
@@ -241,9 +296,22 @@ try:
         folium.Marker(
             location=city_coords,
             popup=f"{clean_city}",
-            tooltip="Click for details",
+            tooltip="Your Location",
             icon=folium.Icon(color="red", icon="info-sign", prefix="fa")
         ).add_to(m)
+        
+        # Add tourist attractions if enabled
+        if show_attractions and city in ATTRACTIONS:
+            for attr in ATTRACTIONS[city]:
+                folium.Marker(
+                    location=attr["coords"],
+                    popup=attr["name"],
+                    tooltip=f"Attraction: {attr['name']}",
+                    icon=folium.Icon(
+                        color="green" if attr["type"] == "nature" else "blue",
+                        icon=attr.get("icon", "info-sign")
+                    )
+                ).add_to(m)
         
         # Add circle for visibility if available
         if weather_data and 'visibility' in weather_data and isinstance(weather_data['visibility'], int):
@@ -259,6 +327,25 @@ try:
         
         # Display the map
         folium_static(m, width=900, height=500)
+    
+    # ============ ITINERARY GENERATOR ============
+    if 'generate_itinerary' in st.session_state:
+        st.markdown("## 📝 Suggested 1-Day Itinerary")
+        
+        if city in ATTRACTIONS and len(ATTRACTIONS[city]) >= 2:
+            morning_attr = random.choice(ATTRACTIONS[city])
+            afternoon_attr = random.choice([a for a in ATTRACTIONS[city] if a != morning_attr])
+            
+            itinerary = f"""
+            **Morning (9AM-12PM):** Visit {morning_attr['name']}
+            **Lunch (12PM-2PM):** Try {FOOD_RECOMMENDATIONS.get(state, 'local cuisine').split(',')[0]}
+            **Afternoon (2PM-5PM):** Explore {afternoon_attr['name']}
+            **Evening (7PM+):** Dinner at a local restaurant
+            """
+            st.markdown(itinerary)
+            st.session_state.itinerary = itinerary
+        else:
+            st.warning("Not enough attraction data to generate itinerary")
     
     # ============ 5-DAY FORECAST ============
     if show_forecast:
