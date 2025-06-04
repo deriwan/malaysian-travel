@@ -264,6 +264,24 @@ FOOD_RECOMMENDATIONS = {
     }
 }
 
+# Restaurant suggestions for each state
+RESTAURANT_SUGGESTIONS = {
+    "Johor": "📍 **Where to try:** Muar town for authentic Mee Bandung, JB Central for Laksa Johor",
+    "Penang": "📍 **Where to try:** Gurney Drive, Penang Road, Georgetown UNESCO area",
+    "Malacca": "📍 **Where to try:** Jonker Street, Heeren Street, Cheng Hoon Teng area",
+    "Perak": "📍 **Where to try:** Ipoh Old Town, New Town kopitiam, Concubine Lane",
+    "Kelantan": "📍 **Where to try:** Siti Khadijah Market, Kota Bharu night market",
+    "Sabah": "📍 **Where to try:** Filipino Market KK, Gaya Street Sunday Market",
+    "Sarawak": "📍 **Where to try:** Kuching Waterfront, Top Spot Food Court",
+    "Federal Territory": "📍 **Where to try:** Jalan Alor, Petaling Street, Bangsar, KLCC",
+    "Kedah": "📍 **Where to try:** Pekan Rabu, Alor Setar night market",
+    "Pahang": "📍 **Where to try:** Teluk Cempedak area, Kuantan city center",
+    "Negeri Sembilan": "📍 **Where to try:** Terminal One Shopping Center, Seremban town",
+    "Terengganu": "📍 **Where to try:** Chinatown area, Kuala Terengganu night market",
+    "Perlis": "📍 **Where to try:** Kangar town center, Padang Besar border market",
+    "Selangor": "📍 **Where to try:** SS2 Petaling Jaya, Shah Alam Section 7"
+}
+
 # ============ SIDEBAR ============
 with st.sidebar:
     st.markdown("### 🗺️ Location Settings")
@@ -462,35 +480,13 @@ try:
     with st.expander("🍜 Must-Try Local Foods"):
         food_info = FOOD_RECOMMENDATIONS.get(state, FOOD_RECOMMENDATIONS["Federal Territory"])
         
-        # Display food information in columns
-        col1, col2 = st.columns([2, 1])
+        # Display food information
+        st.markdown(f"### **{food_info['dishes']}**")
+        st.markdown(f"*{food_info['description']}*")
         
-        with col1:
-            st.markdown(f"### **{food_info['dishes']}**")
-            st.markdown(f"*{food_info['description']}*")
-            
-            # Add some popular restaurants/locations
-            restaurant_suggestions = {
-                "Johor": "📍 **Where to try:** Muar town for authentic Mee Bandung, JB Central for Laksa Johor",
-                "Penang": "📍 **Where to try:** Gurney Drive, Penang Road, Georgetown UNESCO area",
-                "Malacca": "📍 **Where to try:** Jonker Street, Heeren Street, Cheng Hoon Teng area",
-                "Perak": "📍 **Where to try:** Ipoh Old Town, New Town kopitiam, Concubine Lane",
-                "Kelantan": "📍 **Where to try:** Siti Khadijah Market, Kota Bharu night market",
-                "Sabah": "📍 **Where to try:** Filipino Market KK, Gaya Street Sunday Market",
-                "Sarawak": "📍 **Where to try:** Kuching Waterfront, Top Spot Food Court",
-                "Federal Territory": "📍 **Where to try:** Jalan Alor, Petaling Street, Bangsar, KLCC"
-            }
-            
-            if state in restaurant_suggestions:
-                st.markdown(restaurant_suggestions[state])
-            
-        with col2:
-            # Display the appropriate food image
-            try:
-                st.image(food_info['image'], caption=f"Signature dishes of {state}", use_container_width=True)
-            except:
-                # Fallback to a default food image if specific image not found
-                st.image("/images/food/kl-nasi-lemak.jpg", caption=f"Local cuisine of {state}", use_container_width=True)
+        # Add restaurant suggestions
+        if state in RESTAURANT_SUGGESTIONS:
+            st.markdown(RESTAURANT_SUGGESTIONS[state])
     
     # ============ INTERACTIVE MAP ============
     if show_map:
@@ -682,5 +678,3 @@ st.markdown("""
         <p>Map data © OpenStreetMap contributors • Icons by OpenWeather</p>
     </div>
 """, unsafe_allow_html=True)
-
-
