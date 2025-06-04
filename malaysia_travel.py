@@ -97,6 +97,11 @@ ATTRACTIONS = {
         {"name": "Kek Lok Si Temple", "coords": (5.4030, 100.2732), "type": "cultural", "icon": "temple"},
         {"name": "Penang Hill", "coords": (5.4289, 100.2569), "type": "nature", "icon": "mountain"}
     ],
+    "Malacca (Malacca)": [
+        {"name": "A Famosa", "coords": (2.1896, 102.2501), "type": "historic", "icon": "landmark"},
+        {"name": "Christ Church", "coords": (2.1944, 102.2501), "type": "cultural", "icon": "church"},
+        {"name": "Jonker Street", "coords": (2.1944, 102.2501), "type": "cultural", "icon": "shopping"}
+    ],
     # Add attractions for other cities
 }
 
@@ -105,6 +110,8 @@ FOOD_RECOMMENDATIONS = {
     "Johor": "Laksa Johor, Mee Bandung, Satay",
     "Penang": "Char Kway Teow, Assam Laksa, Penang Rojak",
     "Kuala Lumpur": "Nasi Lemak, Satay, Bak Kut Teh",
+    "Malacca": "Chicken Rice Ball, Cendol, Nyonya Laksa",
+    "Selangor": "Bak Kut Teh, Yong Tau Foo, Hokkien Mee",
     # Add for other states
 }
 
@@ -213,7 +220,10 @@ try:
                 "Johor Bahru": "1.8 million",
                 "Kuala Lumpur": "1.9 million",
                 "George Town": "0.7 million",
-                # Add other cities
+                "Malacca": "0.5 million",
+                "Ipoh": "0.7 million",
+                "Kuching": "0.6 million",
+                "Kota Kinabalu": "0.5 million",
             }
             st.markdown(f"**Population:** {population_data.get(clean_city, 'Data not available')}")
             
@@ -223,7 +233,10 @@ try:
                 "Johor Bahru": "Gateway to Singapore via the Causeway",
                 "Kuala Lumpur": "Home to the Petronas Twin Towers",
                 "George Town": "UNESCO World Heritage Site",
-                # Add more facts
+                "Malacca": "Historic trading port and UNESCO World Heritage Site",
+                "Ipoh": "Famous for white coffee and limestone caves",
+                "Kuching": "Cat City with beautiful riverfront",
+                "Kota Kinabalu": "Gateway to Mount Kinabalu",
             }
             st.info(fun_facts.get(clean_city, "A beautiful Malaysian city with rich culture"))
     
@@ -281,9 +294,9 @@ try:
     # ============ LOCAL FOOD RECOMMENDATIONS ============
     with st.expander("🍜 Must-Try Local Foods"):
         st.markdown(f"**{FOOD_RECOMMENDATIONS.get(state, 'Nasi Lemak (National Dish)')}**")
-        # Placeholder for food images - in a real app, use actual images
+        # Fixed: Changed use_column_width to use_container_width
         st.image("https://via.placeholder.com/600x200.png?text=Local+Food+Images", 
-                caption="Sample local dishes", use_column_width=True)
+                caption="Sample local dishes", use_container_width=True)
     
     # ============ INTERACTIVE MAP ============
     if show_map:
