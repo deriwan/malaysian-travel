@@ -86,33 +86,122 @@ STATE_CAPITALS = {
     }
 }
 
-# Tourist attractions data
+# Tourist attractions data - Complete for all cities
 ATTRACTIONS = {
     "Kuala Lumpur (Federal Territory)": [
         {"name": "Petronas Twin Towers", "coords": (3.1579, 101.7116), "type": "landmark", "icon": "tower"},
         {"name": "Batu Caves", "coords": (3.2373, 101.6839), "type": "nature", "icon": "mountain"},
-        {"name": "Merdeka Square", "coords": (3.1479, 101.6937), "type": "historic", "icon": "landmark"}
+        {"name": "Merdeka Square", "coords": (3.1479, 101.6937), "type": "historic", "icon": "landmark"},
+        {"name": "KL Tower", "coords": (3.1529, 101.7030), "type": "landmark", "icon": "tower"},
+        {"name": "Central Market", "coords": (3.1434, 101.6958), "type": "cultural", "icon": "shopping"}
+    ],
+    "Putrajaya (Federal Territory)": [
+        {"name": "Putra Mosque", "coords": (2.9264, 101.6964), "type": "cultural", "icon": "mosque"},
+        {"name": "Putrajaya Lake", "coords": (2.9158, 101.6942), "type": "nature", "icon": "lake"},
+        {"name": "Prime Minister's Office", "coords": (2.9264, 101.6964), "type": "landmark", "icon": "building"}
+    ],
+    "Labuan (Federal Territory)": [
+        {"name": "Labuan War Cemetery", "coords": (5.2767, 115.2417), "type": "historic", "icon": "memorial"},
+        {"name": "Chimney Museum", "coords": (5.2767, 115.2417), "type": "cultural", "icon": "museum"},
+        {"name": "Surrender Point", "coords": (5.2767, 115.2417), "type": "historic", "icon": "landmark"}
     ],
     "George Town (Penang)": [
         {"name": "Kek Lok Si Temple", "coords": (5.4030, 100.2732), "type": "cultural", "icon": "temple"},
-        {"name": "Penang Hill", "coords": (5.4289, 100.2569), "type": "nature", "icon": "mountain"}
+        {"name": "Penang Hill", "coords": (5.4289, 100.2569), "type": "nature", "icon": "mountain"},
+        {"name": "Georgetown UNESCO Site", "coords": (5.4141, 100.3288), "type": "historic", "icon": "landmark"},
+        {"name": "Clan Houses", "coords": (5.4141, 100.3288), "type": "cultural", "icon": "building"}
+    ],
+    "Johor Bahru (Johor)": [
+        {"name": "Sultan Abu Bakar Mosque", "coords": (1.4655, 103.7578), "type": "cultural", "icon": "mosque"},
+        {"name": "Johor Bahru City Square", "coords": (1.4655, 103.7578), "type": "shopping", "icon": "shopping"},
+        {"name": "Danga Bay", "coords": (1.4419, 103.6793), "type": "nature", "icon": "beach"},
+        {"name": "Istana Besar", "coords": (1.4655, 103.7578), "type": "historic", "icon": "palace"}
+    ],
+    "Alor Setar (Kedah)": [
+        {"name": "Alor Setar Tower", "coords": (6.1214, 100.3695), "type": "landmark", "icon": "tower"},
+        {"name": "Zahir Mosque", "coords": (6.1214, 100.3695), "type": "cultural", "icon": "mosque"},
+        {"name": "Paddy Museum", "coords": (6.1214, 100.3695), "type": "cultural", "icon": "museum"},
+        {"name": "Pekan Rabu Market", "coords": (6.1214, 100.3695), "type": "cultural", "icon": "shopping"}
+    ],
+    "Kota Bharu (Kelantan)": [
+        {"name": "Istana Jahar", "coords": (6.1256, 102.2432), "type": "historic", "icon": "palace"},
+        {"name": "Central Market", "coords": (6.1256, 102.2432), "type": "cultural", "icon": "shopping"},
+        {"name": "State Museum", "coords": (6.1256, 102.2432), "type": "cultural", "icon": "museum"},
+        {"name": "Handicraft Village", "coords": (6.1256, 102.2432), "type": "cultural", "icon": "craft"}
     ],
     "Malacca (Malacca)": [
         {"name": "A Famosa", "coords": (2.1896, 102.2501), "type": "historic", "icon": "landmark"},
         {"name": "Christ Church", "coords": (2.1944, 102.2501), "type": "cultural", "icon": "church"},
-        {"name": "Jonker Street", "coords": (2.1944, 102.2501), "type": "cultural", "icon": "shopping"}
+        {"name": "Jonker Street", "coords": (2.1944, 102.2501), "type": "cultural", "icon": "shopping"},
+        {"name": "Stadthuys", "coords": (2.1944, 102.2501), "type": "historic", "icon": "building"},
+        {"name": "Malacca River", "coords": (2.1896, 102.2501), "type": "nature", "icon": "river"}
     ],
-    # Add attractions for other cities
+    "Seremban (Negeri Sembilan)": [
+        {"name": "State Museum", "coords": (2.7259, 101.9424), "type": "cultural", "icon": "museum"},
+        {"name": "Lake Gardens", "coords": (2.7259, 101.9424), "type": "nature", "icon": "park"},
+        {"name": "Centipede Temple", "coords": (2.7259, 101.9424), "type": "cultural", "icon": "temple"},
+        {"name": "Minangkabau Architecture", "coords": (2.7259, 101.9424), "type": "cultural", "icon": "building"}
+    ],
+    "Kuantan (Pahang)": [
+        {"name": "Teluk Cempedak Beach", "coords": (3.8077, 103.3260), "type": "nature", "icon": "beach"},
+        {"name": "Sultan Ahmad Shah Mosque", "coords": (3.8077, 103.3260), "type": "cultural", "icon": "mosque"},
+        {"name": "Kuantan River", "coords": (3.8077, 103.3260), "type": "nature", "icon": "river"},
+        {"name": "Natural Batik Village", "coords": (3.8077, 103.3260), "type": "cultural", "icon": "craft"}
+    ],
+    "Ipoh (Perak)": [
+        {"name": "Kellie's Castle", "coords": (4.5975, 101.0901), "type": "historic", "icon": "castle"},
+        {"name": "Cave Temples", "coords": (4.5975, 101.0901), "type": "cultural", "icon": "temple"},
+        {"name": "Old Town", "coords": (4.5975, 101.0901), "type": "historic", "icon": "landmark"},
+        {"name": "Concubine Lane", "coords": (4.5975, 101.0901), "type": "cultural", "icon": "shopping"}
+    ],
+    "Kangar (Perlis)": [
+        {"name": "Perlis State Park", "coords": (6.4414, 100.1986), "type": "nature", "icon": "park"},
+        {"name": "Wang Kelian Market", "coords": (6.4414, 100.1986), "type": "cultural", "icon": "shopping"},
+        {"name": "Kota Kayang Museum", "coords": (6.4414, 100.1986), "type": "cultural", "icon": "museum"},
+        {"name": "Al-Hussain Mosque", "coords": (6.4414, 100.1986), "type": "cultural", "icon": "mosque"}
+    ],
+    "Kota Kinabalu (Sabah)": [
+        {"name": "Mount Kinabalu", "coords": (5.9804, 116.0735), "type": "nature", "icon": "mountain"},
+        {"name": "Tunku Abdul Rahman Park", "coords": (5.9804, 116.0735), "type": "nature", "icon": "island"},
+        {"name": "Signal Hill Observatory", "coords": (5.9804, 116.0735), "type": "landmark", "icon": "tower"},
+        {"name": "Filipino Market", "coords": (5.9804, 116.0735), "type": "cultural", "icon": "shopping"}
+    ],
+    "Kuching (Sarawak)": [
+        {"name": "Sarawak Cultural Village", "coords": (1.5397, 110.3542), "type": "cultural", "icon": "village"},
+        {"name": "Kuching Waterfront", "coords": (1.5397, 110.3542), "type": "nature", "icon": "river"},
+        {"name": "Cat Museum", "coords": (1.5397, 110.3542), "type": "cultural", "icon": "museum"},
+        {"name": "Semenggoh Wildlife Centre", "coords": (1.5397, 110.3542), "type": "nature", "icon": "wildlife"}
+    ],
+    "Shah Alam (Selangor)": [
+        {"name": "Blue Mosque", "coords": (3.0733, 101.5185), "type": "cultural", "icon": "mosque"},
+        {"name": "i-City Theme Park", "coords": (3.0733, 101.5185), "type": "entertainment", "icon": "park"},
+        {"name": "Shah Alam Lake", "coords": (3.0733, 101.5185), "type": "nature", "icon": "lake"},
+        {"name": "Gallery Shah Alam", "coords": (3.0733, 101.5185), "type": "cultural", "icon": "gallery"}
+    ],
+    "Kuala Terengganu (Terengganu)": [
+        {"name": "Crystal Mosque", "coords": (5.3296, 103.1370), "type": "cultural", "icon": "mosque"},
+        {"name": "Terengganu State Museum", "coords": (5.3296, 103.1370), "type": "cultural", "icon": "museum"},
+        {"name": "Chinatown", "coords": (5.3296, 103.1370), "type": "cultural", "icon": "shopping"},
+        {"name": "Drawbridge", "coords": (5.3296, 103.1370), "type": "landmark", "icon": "bridge"}
+    ]
 }
 
-# Food recommendations
+# Food recommendations - Complete for all states
 FOOD_RECOMMENDATIONS = {
-    "Johor": "Laksa Johor, Mee Bandung, Satay",
-    "Penang": "Char Kway Teow, Assam Laksa, Penang Rojak",
-    "Kuala Lumpur": "Nasi Lemak, Satay, Bak Kut Teh",
-    "Malacca": "Chicken Rice Ball, Cendol, Nyonya Laksa",
-    "Selangor": "Bak Kut Teh, Yong Tau Foo, Hokkien Mee",
-    # Add for other states
+    "Johor": "Laksa Johor, Mee Bandung Muar, Satay, Otak-Otak",
+    "Kedah": "Laksa Kedah, Nasi Ulam, Pulut Panggang, Jeruk Mangga",
+    "Kelantan": "Nasi Kerabu, Ayam Percik, Solok Lada, Keropok Lekor",
+    "Malacca": "Chicken Rice Ball, Cendol, Nyonya Laksa, Satay Celup",
+    "Negeri Sembilan": "Masak Lemak Cili Api, Rendang Daging, Gulai Tempoyak",
+    "Pahang": "Ikan Patin Masak Tempoyak, Keropok Lekor, Gulai Kawah",
+    "Penang": "Char Kway Teow, Assam Laksa, Penang Rojak, Cendol",
+    "Perak": "Ipoh White Coffee, Taugeh Ayam, Hor Fun, Dim Sum",
+    "Perlis": "Laksa Perlis, Harum Manis Mango, Jeruk Kedondong",
+    "Sabah": "Hinava, Ambuyat, Tuhau, Bosou, Pinasakan",
+    "Sarawak": "Sarawak Laksa, Kolo Mee, Manok Pansuh, Midin Belacan",
+    "Selangor": "Bak Kut Teh, Yong Tau Foo, Hokkien Mee, Satay Kajang",
+    "Terengganu": "Keropok Lekor, Nasi Dagang, Satar, Nekbat",
+    "Federal Territory": "Nasi Lemak, Satay, Bak Kut Teh, Roti Canai, Char Kway Teow"
 }
 
 # ============ SIDEBAR ============
@@ -485,3 +574,4 @@ st.markdown("""
         <p>Map data © OpenStreetMap contributors • Icons by OpenWeather</p>
     </div>
 """, unsafe_allow_html=True)
+
