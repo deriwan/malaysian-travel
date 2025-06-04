@@ -546,3 +546,7 @@ try:
                     # Get most common icon and description
                     icon = max(set(forecast_days[dates[i]]['icons']), key=forecast_days[dates[i]]['icons'].count)
                     desc = max(set(forecast_days[dates[i]]['descriptions']), key
+                    
+                    # Get most common icon and description
+                    icon = max(set(forecast_days[dates[i]]['icons']), key=forecast_days[dates[i]]['icons'].count)
+                    desc = max(set(forecast_days[dates[i]]['descriptions']), key
