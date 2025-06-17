@@ -63,7 +63,7 @@ with col1:
     st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Flag_of_Malaysia.svg/1200px-Flag_of_Malaysia.svg.png", 
              width=100)
 with col2:
-    st.markdown("<h1 style='text-align: left;'>🌴 Malaysia Travelog</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: left;'>🌴 MALAYSIAN TRAVELOG</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: left; color: #A9A9A9;'>Your complete guide to Malaysian travel with real-time data</p>", unsafe_allow_html=True)
 
 # ============ DATA CONFIGURATION ============
