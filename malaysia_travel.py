@@ -9,7 +9,7 @@ from PIL import Image
 
 # ============ SETTINGS ============
 st.set_page_config(
-    page_title="Smart Malaysia Travel Companion", 
+    page_title="MALAYSIAN TRAVELOG", 
     layout="wide", 
     page_icon="🌴",
     initial_sidebar_state="expanded"
