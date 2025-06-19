@@ -432,7 +432,7 @@ try:
         col1, col2, col3 = st.columns([1, 1, 2])
         
         with col1:
-            st.markdown("### 🌡️ Temperature")
+            st.markdown("### 🌡️ Suhu")
             temp = weather_data['main']['temp']
             st.markdown(f"<h1 style='color: #FF4B4B;'>{temp} {temp_unit}</h1>", unsafe_allow_html=True)
             st.markdown(f"Feels like: {weather_data['main']['feels_like']} {temp_unit}")
@@ -624,7 +624,7 @@ try:
             fig.update_layout(
                 template="plotly_dark",
                 xaxis_title="Date",
-                yaxis_title=f"suhu ({temp_unit})",
+                yaxis_title=f"Temperature ({temp_unit})",
                 yaxis2=dict(
                     title="Humidity (%)",
                     overlaying="y",
