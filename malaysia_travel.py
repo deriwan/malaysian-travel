@@ -585,7 +585,7 @@ try:
                 x=dates,
                 y=avg_temps,
                 mode='lines+markers',
-                name='Temperature',
+                name='Suhu',
                 line=dict(color='#FF7043', width=3),
                 marker=dict(size=10, color='#FF7043'),
                 hovertemplate='%{y}' + temp_unit
