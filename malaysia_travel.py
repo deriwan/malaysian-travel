@@ -624,7 +624,7 @@ try:
             fig.update_layout(
                 template="plotly_dark",
                 xaxis_title="Date",
-                yaxis_title=f"Temperature ({temp_unit})",
+                yaxis_title=f"suhu ({temp_unit})",
                 yaxis2=dict(
                     title="Humidity (%)",
                     overlaying="y",
